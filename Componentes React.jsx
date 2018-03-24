@@ -1,11 +1,10 @@
-
 // 4 Formas de crear componetes en React
 
 // Función pura
 function Comentario(props) {
-  const nombre = props.usuario_nombre;
-  const avatar = props.usuario_avatar;
-  const texto = props.texto;
+  const nombre = props.usuario_nombre
+  const avatar = props.usuario_avatar
+  const texto = props.texto
   return (
     <div>
       <img src={avatar} />
@@ -21,32 +20,32 @@ function Comentario(props) {
 // Permiete usar Mixint
 const Comentario = React.createClass({
   // Hay que usar getInitialState() para crear el estado
-  getInitialState() {
+  getInitialState () {
     return {
-      me_gusta: false,
-    };
+      me_gusta: false
+    }
   },
-  dar_Me_Gusta() {
+  dar_Me_Gusta () {
     this.setState({
-      me_gusta: true,
-    });
-  }
-  render() {
-    const nombre = props.usuario_nombre;
-    const avatar = props.usuario_avatar;
-    const texto = props.texto;
+      me_gusta: !this.state.me_gusta
+    })
+  },
+  render () {
+    const nombre = props.usuario_nombre
+    const avatar = props.usuario_avatar
+    const texto = props.texto
     return (
       <div>
         <img src={avatar} />
-        <h3 >{nombre}</h3>
+        <h3>{nombre}</h3>
         <p>{texto}</p>
         <button onClick={this.dar_Me_Gusta}>
           Me gusta
         </button>
       </div>
-    );
+    )
   }
-});
+})
 
 //-------------------------------------------------------------
 
@@ -55,29 +54,29 @@ const Comentario = React.createClass({
 // Es la manera recomendada
 class Comentario extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     // Tiene la ventaja de tener estados
     this.state = {
-      me_gusta: false,
-    };
+      me_gusta: false
+    }
     // Aqui es un buen lugar para hacer bind
-    this.dar_Me_Gusta = this.dar_Me_Gusta.bind(this);
+    this.dar_Me_Gusta = this.dar_Me_Gusta.bind(this)
   }
 
   dar_Me_Gusta() {
     this.setState({
-      me_gusta: true,
-    });
+      me_gusta: !this.state.me_gusta
+    })
   }
 
   render() {
-    const nombre = props.usuario_nombre;
-    const avatar = props.usuario_avatar;
-    const texto = props.texto;
+    const nombre = props.usuario_nombre
+    const avatar = props.usuario_avatar
+    const texto = props.texto
     return (
       <div>
         <img src={avatar} />
-        <h3 >{nombre}</h3>
+        <h3>{nombre}</h3>
         <p>{texto}</p>
         <button onClick={this.dar_Me_Gusta}>
           Me gusta
@@ -95,34 +94,32 @@ class Comentario extends React.Component {
 // y su estado no cambió, bloquea el renderizada de todos los nodos hijos.
 class MiComponente extends React.PureComponent {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      me_gusta: false,
+      me_gusta: false
     };
-    this.dar_Me_Gusta = this.dar_Me_Gusta.bind(this);
+    this.dar_Me_Gusta = this.dar_Me_Gusta.bind(this)
   }
 
   dar_Me_Gusta() {
     this.setState({
-      me_gusta: true,
-    });
+      me_gusta: !this.state.me_gusta
+    })
   }
 
   render() {
-    const nombre = props.usuario_nombre;
-    const avatar = props.usuario_avatar;
-    const texto = props.texto;
+    const nombre = props.usuario_nombre
+    const avatar = props.usuario_avatar
+    const texto = props.texto
     return (
       <div>
         <img src={avatar} />
-        <h3 >
-          {nombre}
-        </h3>
+        <h3>{nombre}</h3>
         <p>{texto}</p>
         <button onClick={this.dar_Me_Gusta}>
           Me gusta
         </button>
       </div>
-    );
+    )
   }
 }
